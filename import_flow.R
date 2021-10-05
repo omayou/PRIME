@@ -4,7 +4,7 @@ import_flow <- function(flowfilename, startdate, enddate, timestep, flowunit) {
   flow <- flow[-(1:6),]                                 # Remove first 6 rows (data specification)
   flow <- flow[1:2]                                     # only select the first 2 columns, in case there are additional columns
   colnames(flow) <- c("date", "flow_lps")               # Adjust column names
-  flow$date <- as.POSIXct(flow$date,format="%d/%m/%Y %H:%M",tz=Sys.timezone())   # Change the Time type so that R can read it
+  flow$date <- as.POSIXct(flow$date,format = "%d/%m/%Y %H:%M",tz=Sys.timezone())   # Change the Time type so that R can read it
   flow <- flow[flow$date >= startdate & 
                  flow$date < enddate,]                  # Select the period of interest
 
