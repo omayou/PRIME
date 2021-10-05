@@ -16,7 +16,7 @@ import_flow <- function(flowfilename, startdate, enddate, timestep, flowunit) {
   }
   else if (timestep == 'daily')
   {
-    flow <- aggregate(flow[names(flow) != 'date'], list(date_daily = cut(flow$date, 'day')), mean, na.rm = F)
+    flow <- aggregate(flow[names(flow) != 'date'], list(date_daily = cut(flow$date, 'DSTday')), mean, na.rm = F)
   }
   else if (timestep == 'default')
   {
