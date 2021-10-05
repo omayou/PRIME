@@ -5,7 +5,7 @@ import_rain <- function(rainfilename, startdate, enddate, timestep) {
   colnames(rain) <- c("date", "rain_mm")            # Adjust column names
   rain$date <- as.POSIXct(rain$date,format = "%d/%m/%Y %H:%M",tz = Sys.timezone())   # Change the Time type so that R can read it
   rain <- rain[rain$date >= startdate & 
-                 rain$date < enddate,]              # Select only the period of interest
+                 rain$date < enddate,]              # Select the period of interest
   rain$rain_mm <- as.numeric(rain$rain_mm)          # Change the rain data type (from character) to number
 
   if(timestep == 'hourly')
