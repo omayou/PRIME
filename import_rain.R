@@ -10,11 +10,11 @@ import_rain <- function(rainfilename, startdate, enddate, timestep) {
 
   if(timestep == 'hourly')
   {
-    rain <- aggregate(rain[names(rain) != 'date'], list(hourly = cut(rain$date, 'hour')), sum, na.rm = F)
+    rain <- aggregate(rain[names(rain) != 'date'], list(date_hourly = cut(rain$date, 'hour')), sum, na.rm = F)
   }
   else if (timestep == 'daily')
   {
-    rain <- aggregate(rain[names(rain) != 'date'], list(daily = cut(rain$date, 'day')), sum, na.rm = F)
+    rain <- aggregate(rain[names(rain) != 'date'], list(date_daily = cut(rain$date, 'day')), sum, na.rm = F)
   }
   else if (timestep == 'default')
   {
