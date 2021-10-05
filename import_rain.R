@@ -1,4 +1,4 @@
-import_rain <- function(filename, startdate, enddate, timestep) {
+import_rain <- function(rainfilename, startdate, enddate, timestep) {
   
   rain <- read.csv(file = filename, header = FALSE) # Import rainfall data [date, rain(mm)]
   rain <- rain[-(1:6),]                             # Remove the first 6 rows (data specification)
