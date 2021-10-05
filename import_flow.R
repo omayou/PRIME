@@ -12,11 +12,11 @@ import_flow <- function(flowfilename, startdate, enddate, timestep, flowunit) {
   
   if(timestep == 'hourly')
   {
-    flow <- aggregate(flow[names(flow) != 'date'], list(hourly = cut(flow$date, 'hour')), mean, na.rm = F)
+    flow <- aggregate(flow[names(flow) != 'date'], list(date_hourly = cut(flow$date, 'hour')), mean, na.rm = F)
   }
   else if (timestep == 'daily')
   {
-    flow <- aggregate(flow[names(flow) != 'date'], list(daily = cut(flow$date, 'day')), mean, na.rm = F)
+    flow <- aggregate(flow[names(flow) != 'date'], list(date_daily = cut(flow$date, 'day')), mean, na.rm = F)
   }
   else if (timestep == 'default')
   {
