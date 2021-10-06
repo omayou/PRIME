@@ -1,8 +1,6 @@
 nearby_data <- function (station, satrtdate, enddate, whatdata, timestep) {
   
 
-
-  
   if (timestep == 'hourly') {
     if (station == 'Mullingar') {
       nearby <- fread("https://cli.fusio.net/cli/climate_data/webdata/hly875.csv",
