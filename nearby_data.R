@@ -11,7 +11,10 @@ nearby_data <- function (station, satrtdate, enddate, whatdata, timestep) {
    } else if (station == 'Ballyhaise') {
      nearby <- fread("https://cli.fusio.net/cli/climate_data/webdata/hly675.csv", 
                      select = c("date", whatdata))
-     }
+   } else if (station == 'Johnstown') {
+     nearby <- fread("https://cli.fusio.net/cli/climate_data/webdata/hly1775.csv", 
+                     select = c("date", whatdata))
+   } 
   }
     
     
@@ -24,6 +27,9 @@ nearby_data <- function (station, satrtdate, enddate, whatdata, timestep) {
                         select = c("date", whatdata))
       } else if (station == 'Ballyhaise') {
         nearby <- fread("https://cli.fusio.net/cli/climate_data/webdata/dly675.csv", 
+                        select = c("date", whatdata))  
+      } else if (station == 'Johnstown') {
+        nearby <- fread("https://cli.fusio.net/cli/climate_data/webdata/dly1775.csv", 
                         select = c("date", whatdata))  
       }
     }
