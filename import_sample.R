@@ -1,11 +1,11 @@
 import_sample <- function(samplefilename, flow) {
   
-  sampleevent <- read.csv(file = rainfilename, header = FALSE) # Import sample event data [date, number of samples]
+  sampleevent <- read.csv(file = samplefilename, header = FALSE) # Import sample event data [date, number of samples]
   colnames(sampleevent) <- c("date", "number")                # Adjust column names
-  sampleevent$date <- as.POSIXct(sampleevent$date,format = "%d/%m/%Y %H:%M:%S",tz = Sys.timezone())   # Change the Time type so that R can read it
+  sampleevent$date <- as.POSIXct(sampleevent$date,format = "%d/%m/%Y %H:%M",tz = Sys.timezone())   # Change the Time type so that R can read it
 
   sampleevent$number <- as.numeric(sampleevent$number)              # to make sure sample numbers are numeric
-  
+  sampleevent <- sampleevent[complete.cases(sampleevent), ]
   
   
   # closest time to each sampling event should be first initialized:
@@ -20,10 +20,10 @@ import_sample <- function(samplefilename, flow) {
     
     if (ClosestTimeToSample[i] >= sampleevent$date[i]) {
       above.t = ClosestTimeToSample[i]
-      below.t = time.series[which(time.series == ClosestTimeToSample[i])-1]
+      below.t = flow$date[which(flow$date == ClosestTimeToSample[i])-1]
     } else {
       below.t = ClosestTimeToSample[i]
-      above.t = time.series[which(time.series == ClosestTimeToSample[i])+1]
+      above.t = flow$date[which(flow$date == ClosestTimeToSample[i])+1]
     }
     ToAbovePortion = as.numeric(difftime(above.t, sampleevent$date[i], units = "secs")) / as.numeric(difftime(above.t, below.t, units = "secs"))
     
