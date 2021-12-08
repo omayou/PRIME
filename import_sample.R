@@ -33,6 +33,8 @@ import_sample <- function(samplefilename, flow) {
     
     
     sampleevent[i, 3] <- sampleevent_flow
+    colnames(sampleevent)[3] <- 'abstract_flow'
+
     
   }
   
