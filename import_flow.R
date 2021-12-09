@@ -34,7 +34,6 @@ import_flow <- function(flowfilename, startdate, enddate, timestep, flowunit) {
   {
     
   }
-  
+  flow[, 1] <- as.POSIXct(flow[, 1])
   flow
 }
-
