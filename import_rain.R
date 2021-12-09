@@ -20,5 +20,6 @@ import_rain <- function(rainfilename, startdate, enddate, timestep) {
   {
     rain
   }
+  rain[,1] <- as.POSIXct(rain[,1])
   rain
 }
